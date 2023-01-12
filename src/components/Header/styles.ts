@@ -26,7 +26,7 @@ export const ButtonNewTransaction = styled.button`
   font-weight: bold;
 
   &:hover {
-    background-color: ${(props) => props.theme['green-700']};
+    background-color: ${(props) => props.theme['green-300']};
     transition: 0.4s;
     cursor: pointer;
   }
