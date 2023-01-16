@@ -14,15 +14,6 @@ Technology
   - react-dialog
   - react-radio-group
 */
-type TransactionTypes = 'Income' | 'Expense'
-
-export interface Itransation {
-  description: string
-  value: number
-  category: string
-  type: TransactionTypes
-}
-
 export function Home() {
   return (
     <HomeContainer>

@@ -1,12 +1,15 @@
 import { Header } from './components/Header'
+import { TransactionProvider } from './contexts/TransactionProvider'
 import { Home } from './pages/Home'
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Home />
-    </div>
+    <TransactionProvider>
+      <div className="App">
+        <Header />
+        <Home />
+      </div>
+    </TransactionProvider>
   )
 }
 
