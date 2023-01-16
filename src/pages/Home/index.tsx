@@ -12,6 +12,7 @@ Technology
  - phosphor icons
  - radix-ui
   - react-dialog
+  - react-radio-group
 */
 type TransactionTypes = 'Income' | 'Expense'
 
