@@ -17,6 +17,11 @@ export const CardContainer = styled.div<ICardContainerStyled>`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    span {
+      color: ${(props) => props.theme['gray-300']};
+      font-weight: 700;
+    }
   }
 
   & > div:nth-child(2) > span {
