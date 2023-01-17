@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const SearchContainer = styled.div`
+export const SearchFormContainer = styled.form`
   width: 100%;
   margin-top: 4rem;
   display: flex;

@@ -1,3 +1,5 @@
+import { format } from 'date-fns'
+import { ITransaction } from '../../../../contexts/TransactionProvider'
 import {
   CreatedDate,
   Description,
@@ -6,13 +8,21 @@ import {
   Value,
 } from './styles'
 
-export function TableRow() {
+interface ITableRow {
+  transaction: ITransaction
+}
+
+export function TableRow({ transaction }: ITableRow) {
   return (
     <TableRowContainer>
-      <Description>Desenvolvimento de site</Description>
-      <Value type={'teste'}>1200</Value>
-      <Type>Venda</Type>
-      <CreatedDate>13/04/2022</CreatedDate>
+      <Description>{transaction.description}</Description>
+      <Value type={transaction.type}>{` ${
+        transaction.type === 'outcome' ? '-' : ''
+      } R$ ${transaction.value}`}</Value>
+      <Type>{transaction.type}</Type>
+      <CreatedDate>
+        {format(transaction.creationDate, 'dd/MM/yyyy')}
+      </CreatedDate>
     </TableRowContainer>
   )
 }

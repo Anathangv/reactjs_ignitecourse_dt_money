@@ -26,7 +26,9 @@ export const Description = styled(baseStyleCell)`
 
 export const Value = styled(baseStyleCell)<IValueStyleProps>`
   color: ${(props) =>
-    props.type ? props.theme['green-700'] : props.theme['red-500']};
+    props.type === 'income'
+      ? props.theme['green-700']
+      : props.theme['red-500']};
   width: 12.5rem;
 `
 

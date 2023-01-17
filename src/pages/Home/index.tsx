@@ -13,6 +13,13 @@ Technology
  - radix-ui
   - react-dialog
   - react-radio-group
+ - react-hook-form
+  - uncontrolled
+  - controlled
+    - Controller
+  - hookform/resolvers
+  - zod
+ - date-fns
 */
 export function Home() {
   return (

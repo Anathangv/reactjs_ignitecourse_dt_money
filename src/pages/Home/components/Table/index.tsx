@@ -4,14 +4,15 @@ import { TableRow } from '../TableRow'
 import { TableContainer } from './styles'
 
 export function Table() {
-  const { transactions } = useContext(TransactionContext)
+  const { filteredTransactions } = useContext(TransactionContext)
 
   return (
     <TableContainer>
-      {transactions &&
-        transactions.map((transaction) => (
+      {filteredTransactions &&
+        filteredTransactions.map((transaction) => (
           <TableRow
-            key={`${transaction.description}-${transaction.category}`}
+            transaction={transaction}
+            key={transaction.creationDate.toDateString()}
           />
         ))}
     </TableContainer>
