@@ -11,10 +11,10 @@ interface ICardPorps {
 export function Card({ title, value, icon, cardColor }: ICardPorps) {
   return (
     <CardContainer cardColor={cardColor}>
-      <div>
+      <header>
         <span>{title}</span>
         {icon}
-      </div>
+      </header>
       <div>
         <span>
           <strong>{`R$ ${value}`}</strong>

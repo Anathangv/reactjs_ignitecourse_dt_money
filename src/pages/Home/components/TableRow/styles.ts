@@ -32,7 +32,7 @@ export const Value = styled(baseStyleCell)<IValueStyleProps>`
   width: 12.5rem;
 `
 
-export const Type = styled(baseStyleCell)`
+export const Category = styled(baseStyleCell)`
   width: 15rem;
 `
 

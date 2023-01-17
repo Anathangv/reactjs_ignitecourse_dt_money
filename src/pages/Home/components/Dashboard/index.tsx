@@ -23,7 +23,7 @@ export function Dashboard() {
       />
       <Card
         title="Total"
-        value={totalIncome + totalOutcome}
+        value={totalIncome - totalOutcome}
         icon={<CurrencyDollar size={32} color={theme.white} />}
         cardColor={theme['green-700']}
       />

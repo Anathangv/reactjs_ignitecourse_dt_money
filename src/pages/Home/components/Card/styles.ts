@@ -13,7 +13,7 @@ export const CardContainer = styled.div<ICardContainerStyled>`
   flex-direction: column;
   gap: 0.75rem;
 
-  & > div:nth-child(1) {
+  header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,7 +24,7 @@ export const CardContainer = styled.div<ICardContainerStyled>`
     }
   }
 
-  & > div:nth-child(2) > span {
+  div > span {
     font-size: 2rem;
     font-weight: 700;
   }

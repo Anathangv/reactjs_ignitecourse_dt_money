@@ -4,7 +4,7 @@ import {
   CreatedDate,
   Description,
   TableRowContainer,
-  Type,
+  Category,
   Value,
 } from './styles'
 
@@ -19,7 +19,7 @@ export function TableRow({ transaction }: ITableRow) {
       <Value type={transaction.type}>{` ${
         transaction.type === 'outcome' ? '-' : ''
       } R$ ${transaction.value}`}</Value>
-      <Type>{transaction.type}</Type>
+      <Category>{transaction.category}</Category>
       <CreatedDate>
         {format(transaction.creationDate, 'dd/MM/yyyy')}
       </CreatedDate>
