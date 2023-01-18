@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
-export const TableContainer = styled.div`
-  margin-top: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+export const TableContainer = styled.table`
+  width: 100%;
+  max-width: 67.5rem;
+  margin: 1.5rem auto 0;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
 `

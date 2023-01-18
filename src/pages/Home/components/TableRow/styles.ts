@@ -1,39 +1,37 @@
 import styled from 'styled-components'
 
-interface IValueStyleProps {
-  type: string
-}
-
-export const TableRowContainer = styled.div`
-  width: 100%;
-  display: flex;
-  gap: 0.5rem;
-  padding: 1.25rem 2rem;
-  border-radius: 5px;
-  background-color: ${(props) => props.theme['gray-600']};
-
-  &:hover {
+export const TableRowContainer = styled.tr`
+  td {
+    padding: 1.25rem 2rem;
     background-color: ${(props) => props.theme['gray-700']};
+
+    &:nth-child(1) {
+      width: 50%;
+    }
+
+    &:nth-child(2) {
+      width: 50%;
+    }
+
+    &:first-child {
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
   }
 `
-const baseStyleCell = styled.span`
-  color: ${(props) => props.theme['gray-300']};
-`
 
-export const Description = styled(baseStyleCell)`
-  flex-grow: 1;
-`
+interface PriceHighlightProps {
+  variant: 'income' | 'outcome'
+}
 
-export const Value = styled(baseStyleCell)<IValueStyleProps>`
+export const PriceHighlight = styled.span<PriceHighlightProps>`
   color: ${(props) =>
-    props.type === 'income'
-      ? props.theme['green-700']
-      : props.theme['red-500']};
-  width: 12.5rem;
+    props.variant === 'income'
+      ? props.theme['green-300']
+      : props.theme['red-300']};
 `
-
-export const Category = styled(baseStyleCell)`
-  width: 15rem;
-`
-
-export const CreatedDate = styled(baseStyleCell)``

@@ -8,13 +8,15 @@ export function Table() {
 
   return (
     <TableContainer>
-      {filteredTransactions &&
-        filteredTransactions.map((transaction) => (
-          <TableRow
-            transaction={transaction}
-            key={transaction.creationDate.toDateString()}
-          />
-        ))}
+      <tbody>
+        {filteredTransactions &&
+          filteredTransactions.map((transaction) => (
+            <TableRow
+              transaction={transaction}
+              key={transaction.creationDate.toDateString()}
+            />
+          ))}
+      </tbody>
     </TableContainer>
   )
 }
