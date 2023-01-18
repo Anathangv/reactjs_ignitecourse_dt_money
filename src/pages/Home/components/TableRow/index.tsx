@@ -1,5 +1,5 @@
-import { format, parseISO } from 'date-fns'
 import { ITransaction } from '../../../../contexts/TransactionContext'
+import { dateFormatter, valueFormatter } from '../../../../utils/formatter'
 import { TableRowContainer, PriceHighlight } from './styles'
 
 interface ITableRow {
@@ -12,13 +12,13 @@ export function TableRow({ transaction }: ITableRow) {
       <td>{transaction.description}</td>
       <td>
         <PriceHighlight variant={transaction.type}>
-          {` ${transaction.type === 'outcome' ? '-' : ''} R$ ${
-            transaction.value
-          }`}
+          {` ${
+            transaction.type === 'outcome' ? '-' : ''
+          } R$ ${valueFormatter.format(transaction.value)}`}
         </PriceHighlight>
       </td>
       <td>{transaction.category}</td>
-      <td>{format(parseISO(transaction.createdAt), 'dd/MM/yyyy')}</td>
+      <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
     </TableRowContainer>
   )
 }

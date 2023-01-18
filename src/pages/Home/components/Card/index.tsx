@@ -1,4 +1,5 @@
 import React from 'react'
+import { valueFormatter } from '../../../../utils/formatter'
 import { CardContainer } from './styles'
 
 interface ICardPorps {
@@ -17,7 +18,7 @@ export function Card({ title, value, icon, cardColor }: ICardPorps) {
       </header>
       <div>
         <span>
-          <strong>{`R$ ${value}`}</strong>
+          <strong>{valueFormatter.format(value)}</strong>
         </span>
       </div>
     </CardContainer>

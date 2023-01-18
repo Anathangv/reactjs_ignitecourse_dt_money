@@ -19,7 +19,7 @@ Technology
     - Controller
   - hookform/resolvers
   - zod
- - date-fns
+ - Intl - formatter
  - json-server
 */
 export function Home() {
