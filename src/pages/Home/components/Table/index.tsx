@@ -5,7 +5,7 @@ import { TableRow } from '../TableRow'
 import { TableContainer } from './styles'
 
 export function Table() {
-  const { filteredTransactions } = useContext(TransactionContext)
+  const { transactions } = useContext(TransactionContext)
 
   return (
     <>
@@ -13,8 +13,8 @@ export function Table() {
 
       <TableContainer>
         <tbody>
-          {filteredTransactions &&
-            filteredTransactions.map((transaction) => (
+          {transactions &&
+            transactions.map((transaction) => (
               <TableRow transaction={transaction} key={transaction.id} />
             ))}
         </tbody>

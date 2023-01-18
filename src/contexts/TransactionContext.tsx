@@ -15,31 +15,34 @@ export interface ITransaction {
 
 interface ITransactionContextType {
   transactions: ITransaction[]
-  filteredTransactions: ITransaction[]
   addNewTransaction: (transaction: ITransaction) => void
-  searchTransaction: (search: string) => void
+  fetchTransactions: (query: string) => Promise<void>
 }
 
 export const TransactionContext = createContext({} as ITransactionContextType)
 
 export function TransactionProvider({ children }: TransactionContextProps) {
   const [transactions, setTransactions] = useState<ITransaction[]>([])
-  const [filteredTransactions, setFilteredTransactions] =
-    useState<ITransaction[]>(transactions)
 
-  async function loadTransactions() {
-    const response = await fetch('http://localhost:3333/transaction')
+  async function fetchTransactions(query?: string) {
+    const url = new URL('http://localhost:3333/transaction')
+
+    if (query) {
+      url.searchParams.append('q', query)
+    }
+
+    const response = await fetch(url)
     const data = await response.json()
 
     setTransactions(data)
   }
 
   useEffect(() => {
-    loadTransactions()
+    fetchTransactions()
   }, [])
 
   useEffect(() => {
-    setFilteredTransactions(transactions)
+    setTransactions(transactions)
   }, [transactions])
 
   function addNewTransaction(transaction: ITransaction) {
@@ -51,21 +54,12 @@ export function TransactionProvider({ children }: TransactionContextProps) {
     ])
   }
 
-  function searchTransaction(search: string) {
-    const searchList = transactions.filter((transaction) =>
-      transaction.description.includes(search),
-    )
-
-    setFilteredTransactions(searchList)
-  }
-
   return (
     <TransactionContext.Provider
       value={{
         transactions,
-        filteredTransactions,
         addNewTransaction,
-        searchTransaction,
+        fetchTransactions,
       }}
     >
       {children}

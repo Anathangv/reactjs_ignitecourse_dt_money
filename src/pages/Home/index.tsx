@@ -21,7 +21,9 @@ Technology
   - zod
  - Intl - formatter
  - json-server
+  - full-text search
  - custom hook
+ - fetch
 */
 export function Home() {
   return (

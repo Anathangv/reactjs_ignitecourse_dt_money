@@ -7,7 +7,7 @@ import { TransactionContext } from '../../../../contexts/TransactionContext'
 import { MagnifyingGlass } from 'phosphor-react'
 
 const searchDataSchema = zod.object({
-  search: zod.string(),
+  query: zod.string(),
 })
 
 type SearchFormData = zod.infer<typeof searchDataSchema>
@@ -21,11 +21,10 @@ export function Search() {
     resolver: zodResolver(searchDataSchema),
   })
 
-  const { searchTransaction } = useContext(TransactionContext)
+  const { fetchTransactions } = useContext(TransactionContext)
 
-  async function handleSearchTransaction({ search }: SearchFormData) {
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-    searchTransaction(search)
+  async function handleSearchTransaction({ query }: SearchFormData) {
+    await fetchTransactions(query)
   }
 
   return (
@@ -33,10 +32,7 @@ export function Search() {
       onSubmit={handleSubmit(handleSearchTransaction)}
       action=""
     >
-      <InputSearch
-        placeholder="Busque por transações"
-        {...register('search')}
-      />
+      <InputSearch placeholder="Busque por transações" {...register('query')} />
       <ButtonSearch type="submit" disabled={isSubmitting}>
         <MagnifyingGlass size={24} />
         Buscar
