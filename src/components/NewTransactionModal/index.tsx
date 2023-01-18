@@ -10,7 +10,7 @@ import {
   CloseButton,
   Content,
   Overlay,
-  TypeTransactionButton,
+  TypeTransaction,
   TypeTransactionContainer,
 } from './styles'
 import * as zod from 'zod'
@@ -33,11 +33,6 @@ const newTransactionFormDataSchema = zod.object({
 })
 
 type NewTransactionFormData = zod.infer<typeof newTransactionFormDataSchema>
-
-// const enum TransactionTypes {
-//   INCOME = 'entrada',
-//   OUTCOME = 'saida',
-// }
 
 const TransactionTypes = {
   income: 'income',
@@ -119,22 +114,14 @@ export function NewTransactionModal({
                     onValueChange={field.onChange}
                     value={field.value}
                   >
-                    <TypeTransactionButton
-                      variant="income"
-                      value="income"
-                      {...register('type')}
-                    >
+                    <TypeTransaction variant="income" value="income">
                       <ArrowCircleUp size={24} />
                       Entrada
-                    </TypeTransactionButton>
-                    <TypeTransactionButton
-                      variant="outcome"
-                      value="outcome"
-                      {...register('type')}
-                    >
+                    </TypeTransaction>
+                    <TypeTransaction variant="outcome" value="outcome">
                       <ArrowCircleDown size={24} />
                       Saída
-                    </TypeTransactionButton>
+                    </TypeTransaction>
                   </TypeTransactionContainer>
                 )
               }}

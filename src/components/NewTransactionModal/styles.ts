@@ -33,7 +33,11 @@ export const Content = styled(Dialog.Content)`
       padding: 1rem;
       border-radius: 6px;
       background-color: ${(props) => props.theme['gray-900']};
-      color: ${(props) => props.theme['gray-500']};
+      color: ${(props) => props.theme['gray-300']};
+
+      &::placeholder {
+        color: ${(props) => props.theme['gray-500']};
+      }
     }
 
     button[type='submit'] {
@@ -74,12 +78,12 @@ export const TypeTransactionContainer = styled(RadioGroup.Root)`
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 `
-interface TypeTransactionButtonProps {
+interface TypeTransactionProps {
   variant: 'income' | 'outcome'
 }
 
 // eslint-disable-next-line prettier/prettier
-export const TypeTransactionButton = styled(RadioGroup.Item)<TypeTransactionButtonProps>`
+export const TypeTransaction = styled(RadioGroup.Item)<TypeTransactionProps>`
   display: flex;
   justify-content: center;
   align-items: center;
