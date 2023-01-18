@@ -1,6 +1,5 @@
 import { Header } from '../../components/Header'
 import { Dashboard } from './components/Dashboard'
-import { Search } from './components/Search'
 import { Table } from './components/Table'
 import { HomeContainer } from './styles'
 
@@ -28,7 +27,6 @@ export function Home() {
       <Header />
       <HomeContainer>
         <Dashboard />
-        <Search />
         <Table />
       </HomeContainer>
     </>

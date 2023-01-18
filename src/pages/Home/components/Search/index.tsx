@@ -4,6 +4,7 @@ import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useContext } from 'react'
 import { TransactionContext } from '../../../../contexts/TransactionProvider'
+import { MagnifyingGlass } from 'phosphor-react'
 
 const searchDataSchema = zod.object({
   search: zod.string(),
@@ -27,8 +28,14 @@ export function Search() {
       onSubmit={handleSubmit(handleSearchTransaction)}
       action=""
     >
-      <InputSearch placeholder="Busque uma transação" {...register('search')} />
-      <ButtonSearch type="submit">Buscar</ButtonSearch>
+      <InputSearch
+        placeholder="Busque por transações"
+        {...register('search')}
+      />
+      <ButtonSearch type="submit">
+        <MagnifyingGlass size={24} />
+        Buscar
+      </ButtonSearch>
     </SearchFormContainer>
   )
 }
