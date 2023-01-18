@@ -4,17 +4,16 @@ interface TransactionContextProps {
   children: ReactNode
 }
 
-export type TransactionType = 'income' | 'outcome'
-
 export interface ITransaction {
+  id: number
   description: string
   value: number
   category: string
-  type: TransactionType
-  creationDate: Date
+  type: 'income' | 'outcome'
+  createdAt: string
 }
 
-interface ITransactionContext {
+interface ITransactionContextType {
   filteredTransactions: ITransaction[]
   totalIncome: number
   totalOutcome: number
@@ -22,12 +21,23 @@ interface ITransactionContext {
   searchTransaction: (search: string) => void
 }
 
-export const TransactionContext = createContext({} as ITransactionContext)
+export const TransactionContext = createContext({} as ITransactionContextType)
 
 export function TransactionProvider({ children }: TransactionContextProps) {
   const [transactions, setTransactions] = useState<ITransaction[]>([])
   const [filteredTransactions, setFilteredTransactions] =
     useState<ITransaction[]>(transactions)
+
+  async function loadTransactions() {
+    const response = await fetch('http://localhost:3333/transaction')
+    const data = await response.json()
+
+    setTransactions(data)
+  }
+
+  useEffect(() => {
+    loadTransactions()
+  }, [])
 
   useEffect(() => {
     setFilteredTransactions(transactions)
@@ -36,7 +46,10 @@ export function TransactionProvider({ children }: TransactionContextProps) {
   function addNewTransaction(transaction: ITransaction) {
     console.log('addNewTransaction', transaction)
 
-    setTransactions((transations) => [...transations, transaction])
+    setTransactions((transations) => [
+      ...transations,
+      { ...transaction, id: transations.length + 1 },
+    ])
   }
 
   function searchTransaction(search: string) {

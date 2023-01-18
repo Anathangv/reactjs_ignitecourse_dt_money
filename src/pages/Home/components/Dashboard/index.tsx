@@ -3,7 +3,7 @@ import { Card } from '../Card'
 import { DashboardContainer } from './styles'
 import { useTheme } from 'styled-components'
 import { useContext } from 'react'
-import { TransactionContext } from '../../../../contexts/TransactionProvider'
+import { TransactionContext } from '../../../../contexts/TransactionContext'
 
 export function Dashboard() {
   const theme = useTheme()

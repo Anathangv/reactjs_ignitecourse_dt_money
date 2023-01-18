@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { TransactionContext } from '../../../../contexts/TransactionProvider'
+import { TransactionContext } from '../../../../contexts/TransactionContext'
 import { Search } from '../Search'
 import { TableRow } from '../TableRow'
 import { TableContainer } from './styles'
@@ -15,10 +15,7 @@ export function Table() {
         <tbody>
           {filteredTransactions &&
             filteredTransactions.map((transaction) => (
-              <TableRow
-                transaction={transaction}
-                key={transaction.creationDate.toDateString()}
-              />
+              <TableRow transaction={transaction} key={transaction.id} />
             ))}
         </tbody>
       </TableContainer>

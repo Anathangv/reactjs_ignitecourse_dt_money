@@ -3,7 +3,7 @@ import { ButtonSearch, InputSearch, SearchFormContainer } from './styles'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useContext } from 'react'
-import { TransactionContext } from '../../../../contexts/TransactionProvider'
+import { TransactionContext } from '../../../../contexts/TransactionContext'
 import { MagnifyingGlass } from 'phosphor-react'
 
 const searchDataSchema = zod.object({

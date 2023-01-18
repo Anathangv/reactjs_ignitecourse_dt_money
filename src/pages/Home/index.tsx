@@ -20,6 +20,7 @@ Technology
   - hookform/resolvers
   - zod
  - date-fns
+ - json-server
 */
 export function Home() {
   return (

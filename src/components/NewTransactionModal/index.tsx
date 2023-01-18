@@ -5,7 +5,7 @@ import { useForm, FormProvider, Controller } from 'react-hook-form'
 import {
   ITransaction,
   TransactionContext,
-} from '../../contexts/TransactionProvider'
+} from '../../contexts/TransactionContext'
 import {
   CloseButton,
   Content,
@@ -65,7 +65,7 @@ export function NewTransactionModal({
       category: transaction.category,
       value: transaction.value,
       type: TransactionTypes[transaction.type],
-      creationDate: new Date(),
+      createdAt: new Date().toISOString(),
     } as ITransaction)
 
     closeNewTransactionModal()

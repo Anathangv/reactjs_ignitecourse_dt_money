@@ -1,13 +1,17 @@
-import { TransactionProvider } from './contexts/TransactionProvider'
+import { ThemeProvider } from 'styled-components'
+import { TransactionProvider } from './contexts/TransactionContext'
 import { Home } from './pages/Home'
+import { GlobalStyle } from './styles/global'
+import { defaultTheme } from './styles/themes/default'
 
 function App() {
   return (
-    <TransactionProvider>
-      <div className="App">
+    <ThemeProvider theme={defaultTheme}>
+      <GlobalStyle />
+      <TransactionProvider>
         <Home />
-      </div>
-    </TransactionProvider>
+      </TransactionProvider>
+    </ThemeProvider>
   )
 }
 
