@@ -23,7 +23,7 @@ Technology
  - json-server
   - full-text search
  - custom hook
- - fetch
+ - axios
 */
 export function Home() {
   return (
