@@ -14,9 +14,8 @@ export interface ITransaction {
 }
 
 interface ITransactionContextType {
+  transactions: ITransaction[]
   filteredTransactions: ITransaction[]
-  totalIncome: number
-  totalOutcome: number
   addNewTransaction: (transaction: ITransaction) => void
   searchTransaction: (search: string) => void
 }
@@ -60,20 +59,11 @@ export function TransactionProvider({ children }: TransactionContextProps) {
     setFilteredTransactions(searchList)
   }
 
-  const totalIncome = transactions
-    .filter((transaction) => transaction.type === 'income')
-    .reduce((result, transaction) => result + transaction.value, 0)
-
-  const totalOutcome = transactions
-    .filter((transaction) => transaction.type === 'outcome')
-    .reduce((result, transaction) => result + transaction.value, 0)
-
   return (
     <TransactionContext.Provider
       value={{
+        transactions,
         filteredTransactions,
-        totalIncome,
-        totalOutcome,
         addNewTransaction,
         searchTransaction,
       }}
