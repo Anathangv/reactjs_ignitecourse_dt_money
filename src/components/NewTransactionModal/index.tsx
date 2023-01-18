@@ -43,21 +43,26 @@ export function NewTransactionModal({
   closeNewTransactionModal,
 }: INewTransactionModal) {
   const { addNewTransaction } = useContext(TransactionContext)
-  const { register, formState, handleSubmit, reset, control } =
-    useForm<NewTransactionFormData>({
-      resolver: zodResolver(newTransactionFormDataSchema),
-      defaultValues: {
-        type: 'income',
-      },
-    })
-
-  console.log('formState', formState)
+  const {
+    register,
+    formState: { isSubmitting },
+    handleSubmit,
+    reset,
+    control,
+  } = useForm<NewTransactionFormData>({
+    resolver: zodResolver(newTransactionFormDataSchema),
+    defaultValues: {
+      type: 'income',
+    },
+  })
 
   const transactionForm = useForm<NewTransactionFormData>({
     resolver: zodResolver(newTransactionFormDataSchema),
   })
 
-  function handleAddNewTransaction(transaction: NewTransactionFormData) {
+  async function handleAddNewTransaction(transaction: NewTransactionFormData) {
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
     console.log('handleAddNewTransaction', transaction)
 
     addNewTransaction({
@@ -127,7 +132,9 @@ export function NewTransactionModal({
               }}
             />
 
-            <button type="submit">Cadastrar</button>
+            <button type="submit" disabled={isSubmitting}>
+              Cadastrar
+            </button>
           </FormProvider>
         </form>
       </Content>

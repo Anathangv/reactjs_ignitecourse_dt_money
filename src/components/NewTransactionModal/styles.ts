@@ -51,7 +51,12 @@ export const Content = styled(Dialog.Content)`
       color: ${(props) => props.theme.white};
       background-color: ${(props) => props.theme['green-500']};
 
-      &:hover {
+      &:disabled {
+        opacity: 0.7;
+        cursor: wait;
+      }
+
+      &:not(:disabled):hover {
         background-color: ${(props) => props.theme['green-700']};
         transition: background-color 0.4s;
       }

@@ -31,7 +31,12 @@ export const ButtonSearch = styled.button`
   border: 1px solid ${(props) => props.theme['green-300']};
   border-radius: 6px;
 
-  &:hover {
+  &:disabled {
+    opacity: 0.7;
+    cursor: wait;
+  }
+
+  &:not(:disabled):hover {
     cursor: pointer;
     background-color: ${(props) => props.theme['green-500']};
     border-color: ${(props) => props.theme['green-500']};
