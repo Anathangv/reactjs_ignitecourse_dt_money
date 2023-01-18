@@ -22,6 +22,7 @@ Technology
  - Intl - formatter
  - json-server
   - full-text search
+  - query params, sort and order
  - custom hook
  - axios
 */

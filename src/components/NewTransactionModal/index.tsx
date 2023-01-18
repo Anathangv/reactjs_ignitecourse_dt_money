@@ -1,11 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
-import { useContext } from 'react'
 import { useForm, FormProvider, Controller } from 'react-hook-form'
-import {
-  ITransaction,
-  TransactionContext,
-} from '../../contexts/TransactionContext'
 import {
   CloseButton,
   Content,
@@ -15,6 +10,8 @@ import {
 } from './styles'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useContext } from 'react'
+import { TransactionContext } from '../../contexts/TransactionContext'
 
 /*
 TODO
@@ -34,15 +31,9 @@ const newTransactionFormDataSchema = zod.object({
 
 type NewTransactionFormData = zod.infer<typeof newTransactionFormDataSchema>
 
-const TransactionTypes = {
-  income: 'income',
-  outcome: 'outcome',
-}
-
 export function NewTransactionModal({
   closeNewTransactionModal,
 }: INewTransactionModal) {
-  const { addNewTransaction } = useContext(TransactionContext)
   const {
     register,
     formState: { isSubmitting },
@@ -60,19 +51,10 @@ export function NewTransactionModal({
     resolver: zodResolver(newTransactionFormDataSchema),
   })
 
+  const { createTransaction } = useContext(TransactionContext)
+
   async function handleAddNewTransaction(transaction: NewTransactionFormData) {
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
-    console.log('handleAddNewTransaction', transaction)
-
-    addNewTransaction({
-      description: transaction.description,
-      category: transaction.category,
-      value: transaction.value,
-      type: TransactionTypes[transaction.type],
-      createdAt: new Date().toISOString(),
-    } as ITransaction)
-
+    createTransaction(transaction)
     closeNewTransactionModal()
     reset()
   }

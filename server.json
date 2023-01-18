@@ -1,5 +1,5 @@
 {
-  "transaction": [
+  "transactions": [
     {
       "id": 1,
       "description": "Desenvolvimento de site",
@@ -15,6 +15,38 @@
       "category": "Alimentação",
       "value": 50,
       "createdAt": "2023-01-18T19:30:44.505Z"
+    },
+    {
+      "description": "Internet",
+      "category": "Casa",
+      "type": "outcome",
+      "value": 97,
+      "createdAt": "2023-01-18T21:46:46.527Z",
+      "id": 3
+    },
+    {
+      "description": "site",
+      "category": "rustle job",
+      "type": "income",
+      "value": 500,
+      "createdAt": "2023-01-18T22:21:11.205Z",
+      "id": 4
+    },
+    {
+      "description": "Dividendos",
+      "category": "Stocks",
+      "type": "income",
+      "value": 45,
+      "createdAt": "2023-01-18T22:22:44.632Z",
+      "id": 5
+    },
+    {
+      "description": "dinner",
+      "category": "Alimentação",
+      "type": "outcome",
+      "value": 65,
+      "createdAt": "2023-01-18T22:25:54.195Z",
+      "id": 6
     }
   ]
 }
