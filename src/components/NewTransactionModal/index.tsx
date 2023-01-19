@@ -10,8 +10,8 @@ import {
 } from './styles'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useContext } from 'react'
 import { TransactionContext } from '../../contexts/TransactionContext'
+import { useContextSelector } from 'use-context-selector'
 
 /*
 TODO
@@ -51,7 +51,12 @@ export function NewTransactionModal({
     resolver: zodResolver(newTransactionFormDataSchema),
   })
 
-  const { createTransaction } = useContext(TransactionContext)
+  const createTransaction = useContextSelector(
+    TransactionContext,
+    (context) => {
+      return context.createTransaction
+    },
+  )
 
   async function handleAddNewTransaction(transaction: NewTransactionFormData) {
     createTransaction(transaction)

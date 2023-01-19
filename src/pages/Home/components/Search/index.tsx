@@ -1,10 +1,11 @@
+import { memo } from 'react'
 import { useForm } from 'react-hook-form'
 import { ButtonSearch, InputSearch, SearchFormContainer } from './styles'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useContext } from 'react'
 import { TransactionContext } from '../../../../contexts/TransactionContext'
 import { MagnifyingGlass } from 'phosphor-react'
+import { useContextSelector } from 'use-context-selector'
 
 const searchDataSchema = zod.object({
   query: zod.string(),
@@ -12,7 +13,10 @@ const searchDataSchema = zod.object({
 
 type SearchFormData = zod.infer<typeof searchDataSchema>
 
-export function Search() {
+/*
+use of memo unnecessary in this case, only use for rerendering study
+*/
+function SearchComponent() {
   const {
     register,
     handleSubmit,
@@ -21,7 +25,16 @@ export function Search() {
     resolver: zodResolver(searchDataSchema),
   })
 
-  const { fetchTransactions } = useContext(TransactionContext)
+  /*
+  use-context-selector - useContextSelector - is used to avoid the component be rerendered 
+  when any other information of the context changes but this component has not dependency
+  */
+  const fetchTransactions = useContextSelector(
+    TransactionContext,
+    (context) => {
+      return context.fetchTransactions
+    },
+  )
 
   async function handleSearchTransaction({ query }: SearchFormData) {
     await fetchTransactions(query)
@@ -40,3 +53,5 @@ export function Search() {
     </SearchFormContainer>
   )
 }
+
+export const Search = memo(SearchComponent)

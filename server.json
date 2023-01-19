@@ -47,6 +47,14 @@
       "value": 65,
       "createdAt": "2023-01-18T22:25:54.195Z",
       "id": 6
+    },
+    {
+      "description": "Parkingl lot",
+      "category": "Car",
+      "type": "outcome",
+      "value": 10,
+      "createdAt": "2023-01-19T13:46:06.487Z",
+      "id": 7
     }
   ]
 }

@@ -5,6 +5,9 @@ import { HomeContainer } from './styles'
 
 /*
 Technology
+ - react
+  - useCallback
+  - memo
  - styled-components  
   - useTheme
   - ThemeProvider
@@ -25,6 +28,8 @@ Technology
   - query params, sort and order
  - custom hook
  - axios
+ - use-context-selector / scheduler - watch a especif information and not to others in this context
+
 */
 export function Home() {
   return (

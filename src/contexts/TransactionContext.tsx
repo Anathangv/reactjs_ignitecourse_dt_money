@@ -1,5 +1,6 @@
-import { createContext, ReactNode, useEffect, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 import { api } from '../lib/axios'
+import { createContext } from 'use-context-selector'
 
 interface TransactionContextProps {
   children: ReactNode
@@ -32,7 +33,11 @@ export const TransactionContext = createContext({} as ITransactionContextType)
 export function TransactionProvider({ children }: TransactionContextProps) {
   const [transactions, setTransactions] = useState<ITransaction[]>([])
 
-  async function fetchTransactions(query?: string) {
+  /*
+  useCallback to avaid that the component Search that uses the function fetchTransactions be recreated only 
+  because the TransactionProvider is rendered and its function are also rerendered
+  */
+  const fetchTransactions = useCallback(async (query?: string) => {
     const response = await api.get('transactions', {
       params: {
         _sort: 'createdAt',
@@ -42,27 +47,28 @@ export function TransactionProvider({ children }: TransactionContextProps) {
     })
 
     setTransactions(response.data)
-  }
+  }, [])
 
   useEffect(() => {
     fetchTransactions()
-  }, [])
+  }, [fetchTransactions])
 
-  async function createTransaction(data: ICreateTransactionInput) {
-    const { category, description, type, value } = data
+  const createTransaction = useCallback(
+    async (data: ICreateTransactionInput) => {
+      const { category, description, type, value } = data
 
-    const response = await api.post('transactions', {
-      description,
-      category,
-      type,
-      value,
-      createdAt: new Date(),
-    })
+      const response = await api.post('transactions', {
+        description,
+        category,
+        type,
+        value,
+        createdAt: new Date(),
+      })
 
-    console.log(response)
-
-    setTransactions((transactions) => [response.data, ...transactions])
-  }
+      setTransactions((transactions) => [response.data, ...transactions])
+    },
+    [],
+  )
 
   return (
     <TransactionContext.Provider
