@@ -18,28 +18,28 @@ https://reactjs-ignitecourse-dt-money.vercel.app/
  - [Typescript](https://www.typescriptlang.org/)
  - [EsLint](https://eslint.org/)
  - [React](https://reactjs.org/)
-  - useContext
-  - useCallback
-  - memo
-  - useMemo
+   - useContext
+   - useCallback
+   - memo
+   - useMemo
  - [styled-components](https://styled-components.com/)
-  - useTheme
-  - ThemeProvider
-  - createGlobalStyle
+   - useTheme
+   - ThemeProvider
+   - createGlobalStyle
  - [phosphor icons](https://phosphoricons.com/)
  - [radix-ui](https://www.radix-ui.com/)
-  - react-dialog
-  - react-radio-group
+   - react-dialog
+   - react-radio-group
  - [react-hook-form](https://react-hook-form.com/)
-  - uncontrolled
-  - controlled
-    - Controller
-  - hookform/resolvers
+   - uncontrolled
+   - controlled
+     - Controller
+   - hookform/resolvers
  - [zod](https://github.com/colinhacks/zod)
  - [Intl - formatter](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Intl)
  - [json-server](https://www.npmjs.com/package/json-server)
-  - full-text search
-  - query params, sort and order
+   - full-text search
+   - query params, sort and order
  - custom hook
  - [axios](https://www.npmjs.com/package/axios)
  - [use-context-selector / scheduler](https://www.npmjs.com/package/use-context-selector)
